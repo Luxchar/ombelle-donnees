@@ -1,0 +1,22 @@
+# Neo4j 5 : la démo graphe de la séance 2, puis le groupe « Neo4j » du TP.
+#
+# Interface web : http://localhost:7474 (utilisateur neo4j, mot de passe ombelle2026).
+services:
+  neo4j:
+    image: neo4j:5
+    container_name: ombelle-neo4j
+    environment:
+      NEO4J_AUTH: neo4j/ombelle2026
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_server_memory_pagecache_size: 512M
+    ports:
+      - "${PORT_NEO4J_WEB:-7474}:7474"
+      - "${PORT_NEO4J:-7687}:7687"
+    volumes:
+      - donnees_neo4j:/data
+      - ../../cours:/cours:ro
+      # LOAD CSV lit les fichiers de /import : LOAD CSV WITH HEADERS FROM 'file:///clients.csv'
+      - ../../donnees/sortie:/import:ro
+
+volumes:
+  donnees_neo4j:

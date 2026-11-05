@@ -1,0 +1,16 @@
+commande_id,produit_id,produit_nom,client_email,demande_le,quantite,motif_code,motif_libelle
+179552,11649,Pantalon Écume,anna.leroy.3@exemple.fr,2026-09-14,1,M1,Taille ou format inadapté
+180026,15377,Pantalon Brume,anna.leroy.3@exemple.fr,2026-09-15,1,M1,Taille ou format inadapté
+180026,18628,Veste Sauge,anna.leroy.3@exemple.fr,2026-09-15,1,M1,Taille ou format inadapté
+183643,17267,Miroir Nacre,ethan.david.267@exemple.fr,2026-09-24,1,M2,Produit abîmé à la livraison
+183998,220,Escape Dragon,ibrahim.mercier.199@exemple.fr,2026-09-25,1,M3,Ne correspond pas à la description
+183998,18388,Casque Max,ibrahim.mercier.199@exemple.fr,2026-09-25,1,M2,Produit arrivé abîmé
+186849,11689,Enceinte Max,julia.legrand.477@exemple.fr,2026-10-02,2,M2,Produit abîmé à la livraison
+186849,2130,Écran Max,julia.legrand.477@exemple.fr,2026-10-02,1,M3,Ne correspond pas à la description
+190247,7794,Chemise Lune,ibrahim.mercier.199@exemple.fr,2026-10-12,1,M1,Taille ou format inadapté
+190825,4436,Gilet Corail,julia.legrand.477@exemple.fr,2026-10-13,2,M1,Taille ou format inadapté
+190825,19207,Gilet Lune,julia.legrand.477@exemple.fr,2026-10-13,1,M1,Taille ou format inadapté
+191176,4048,Baume Rose,ethan.david.267@exemple.fr,2026-10-15,1,M4,Changement d'avis
+191176,7565,Baume Rose,ethan.david.267@exemple.fr,2026-10-15,1,M4,Changement d'avis
+192258,220,Escape Dragon,yasmine.rousseau.305@exemple.fr,2026-10-16,1,M3,Ne correspond pas à la description
+193060,13412,Huile Néroli,anna.leroy.3@exemple.fr,2026-10-20,1,M2,Produit abîmé à la livraison

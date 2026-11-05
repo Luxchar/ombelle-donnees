@@ -1,0 +1,9 @@
+# Les données se régénèrent avec python donnees/generer.py
+donnees/sortie/*
+!donnees/sortie/.gitkeep
+
+# Bases locales et environnements
+*.duckdb
+*.duckdb.wal
+.venv/
+__pycache__/

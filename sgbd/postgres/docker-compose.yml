@@ -1,0 +1,19 @@
+# PostgreSQL 16 : la séance 1, puis les groupes « PostgreSQL » et « PostgreSQL + JSONB » du TP.
+services:
+  db:
+    image: postgres:16
+    container_name: ombelle-postgres
+    environment:
+      POSTGRES_USER: ombelle
+      POSTGRES_PASSWORD: ombelle
+      POSTGRES_DB: ombelle
+    ports:
+      - "${PORT_POSTGRES:-5432}:5432"
+    volumes:
+      - donnees_pg:/var/lib/postgresql/data
+      # Lisibles depuis le conteneur : psql -f /cours/seance-1/coeur.sql, COPY ... FROM '/donnees/clients.csv'
+      - ../../cours:/cours:ro
+      - ../../donnees/sortie:/donnees:ro
+
+volumes:
+  donnees_pg:

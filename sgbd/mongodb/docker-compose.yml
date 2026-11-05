@@ -1,0 +1,26 @@
+# MongoDB 7 : le groupe « MongoDB » du TP.
+#
+# La base démarre en replica set d'un seul nœud. Sans replica set, MongoDB refuse les
+# transactions qui touchent plusieurs documents : c'est le cas 3 du TP.
+services:
+  mongo:
+    image: mongo:7
+    container_name: ombelle-mongo
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - "${PORT_MONGO:-27017}:27017"
+    volumes:
+      - donnees_mongo:/data/db
+      - ../../cours:/cours:ro
+      - ../../donnees/sortie:/donnees:ro
+    healthcheck:
+      # Au premier démarrage, initialise le replica set ; ensuite, vérifie qu'il répond.
+      test: ["CMD", "mongosh", "--quiet", "--eval",
+             "try { rs.status().ok } catch (e) { rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]}).ok }"]
+      interval: 5s
+      timeout: 10s
+      retries: 20
+      start_period: 10s
+
+volumes:
+  donnees_mongo:

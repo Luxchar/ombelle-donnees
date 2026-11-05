@@ -1,0 +1,26 @@
+# Cassandra 5 : la démo colonne de la séance 2, puis le groupe « Cassandra » du TP.
+#
+# Cassandra est gourmande : comptez 2 Go de mémoire libre et une à deux minutes de démarrage.
+services:
+  cassandra:
+    image: cassandra:5
+    container_name: ombelle-cassandra
+    environment:
+      CASSANDRA_CLUSTER_NAME: ombelle
+      MAX_HEAP_SIZE: 1G
+      HEAP_NEWSIZE: 256M
+    ports:
+      - "${PORT_CASSANDRA:-9042}:9042"
+    volumes:
+      - donnees_cassandra:/var/lib/cassandra
+      - ../../cours:/cours:ro
+      - ../../donnees/sortie:/donnees:ro
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'DESCRIBE KEYSPACES' > /dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 40s
+
+volumes:
+  donnees_cassandra:

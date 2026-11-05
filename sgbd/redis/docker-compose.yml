@@ -1,0 +1,16 @@
+# Redis 7 : la démo clé-valeur de la séance 2, puis le groupe « Redis » du TP.
+services:
+  redis:
+    image: redis:7
+    container_name: ombelle-redis
+    # appendonly : chaque écriture est journalisée sur disque. Sans ça, un arrêt brutal
+    # perd les dernières secondes.
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "${PORT_REDIS:-6379}:6379"
+    volumes:
+      - donnees_redis:/data
+      - ../../cours:/cours:ro
+
+volumes:
+  donnees_redis:

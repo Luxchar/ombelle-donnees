@@ -1,0 +1,44 @@
+# Séance 2 · démo clé-valeur avec Redis
+#
+# Depuis sgbd/redis, base lancée (docker compose up -d) :
+#   docker compose exec redis redis-cli          puis copier-coller les commandes
+# ou d'un coup, depuis WSL ou macOS (les lignes de commentaire sont retirées) :
+#   grep -v '^#' ../../cours/seance-2/cle-valeur.redis | docker compose exec -T redis redis-cli
+#
+# Une clé, une valeur. Redis ne sait chercher que par la clé : tout le modèle est
+# dans le choix des noms de clés.
+
+FLUSHDB
+
+ECHO "== 1 · Le panier du client 1234 : un hash, produit -> quantité"
+HSET panier:1234 12 1 439 2 3403 1
+HSET panier:1234 4242 2
+HGETALL panier:1234
+HLEN panier:1234
+
+# Un panier abandonné disparaît tout seul au bout de 7 jours (604 800 s)
+EXPIRE panier:1234 604800
+TTL panier:1234
+
+ECHO "== 2 · La session d'un visiteur : une chaîne qui expire au bout de 30 minutes"
+SET session:9f2c41 "client:1234" EX 1800
+GET session:9f2c41
+
+ECHO "== 3 · Un compteur très sollicité : les vues d'une fiche produit"
+INCR vues:produit:4242
+INCR vues:produit:4242
+INCRBY vues:produit:4242 98
+GET vues:produit:4242
+
+ECHO "== 4 · Le classement des meilleures ventes du jour : un sorted set"
+ZINCRBY ventes:2026-11-10 3 4242
+ZINCRBY ventes:2026-11-10 1 3907
+ZINCRBY ventes:2026-11-10 5 11519
+ZINCRBY ventes:2026-11-10 1 4242
+ZREVRANGE ventes:2026-11-10 0 2 WITHSCORES
+
+ECHO "== 5 · Ce que Redis ne sait pas faire : tous les paniers qui contiennent le produit 4242"
+# Il n'y a pas de requête sur les valeurs. Il faudrait parcourir toutes les clés (SCAN),
+# ou tenir à jour un second index à la main :
+SADD paniers_contenant:4242 1234
+SMEMBERS paniers_contenant:4242
