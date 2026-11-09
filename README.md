@@ -15,7 +15,8 @@ rendu/      le squelette du dépôt de votre groupe, pour le TP
 
 ## Ce qu'il faut
 
-- **Git** et **Docker** (Docker Desktop sous Windows et macOS) ;
+- **Git** ;
+- **PostgreSQL 14 ou plus** : avec Docker, le plus simple (Docker Desktop sous Windows et macOS), ou installé sur votre machine ;
 - **Python 3.10 ou plus**, pour générer les données.
 
 ```bash

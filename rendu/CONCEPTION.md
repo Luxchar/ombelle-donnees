@@ -1,6 +1,6 @@
 # La conception
 
-<!-- Étapes 1 et 2 du TP. Remplacez tout ce qui est entre < >, supprimez ces commentaires. -->
+<!-- Étapes 1, 2 et 4 du TP. Remplacez tout ce qui est entre < >, supprimez ces commentaires. -->
 
 ## 1. Les règles de gestion
 
@@ -32,12 +32,18 @@ flowchart LR
 |---|---|
 | <un A … 0 à n B> | <RG2> |
 
-## 3. Le MLD
+## 3. Le MLD, dans <votre SGBD>
 
-<!-- Clé primaire soulignée, clé étrangère précédée de #. -->
+<!-- Le MCD traduit dans la base choisie dans votre ADR. En relationnel : les tables, clé primaire soulignée, clé étrangère précédée de #. En NoSQL : vos collections, clés, tables ou nœuds, avec un exemple de chacun. Avec plusieurs bases : une partie par base, et quelle donnée va où. -->
 
 - A (<u>id</u>, …)
 - …
+
+| Association du MCD | Dans la base | Pourquoi |
+|---|---|---|
+| <Association, entre A et B> | <une clé étrangère #a_id dans B ; ou : les B imbriqués dans A> | <règle de passage : 1,1 côté B ; ou : on lit toujours A avec ses B> |
+
+Ce que nous recopions exprès, et qui tient la copie à jour : <rien, ou la donnée et qui la met à jour>.
 
 ## 4. Ce que le schéma ne garantit pas
 
@@ -45,11 +51,11 @@ flowchart LR
 |---|---|---|
 | <RG… : au moins un …> | | <une transaction, un trigger, le code> |
 
-## 5. En bonus : le modèle dans <votre SGBD>, et les requêtes
+## 5. En bonus : la base créée, et les requêtes
 
-<!-- Seulement si vous avez fait le bonus ; sinon supprimez cette partie. Si votre SGBD n'est pas relationnel : comment le MLD devient des documents, des clés, des tables par requête ou un graphe. -->
+<!-- Seulement si vous avez fait le bonus ; sinon supprimez cette partie. -->
 
-<Le modèle, avec un extrait de chaque structure.>
+<Comment la base est créée (SQL, schéma d'un ORM, script), et l'écart avec le MLD s'il y en a un.>
 
 | Question de l'application | Requête (fichier dans `modele/`) |
 |---|---|

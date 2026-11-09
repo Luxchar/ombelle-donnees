@@ -10,7 +10,7 @@
 
 | Fichier | Contenu |
 |---|---|
-| [`CONCEPTION.md`](CONCEPTION.md) | les règles de gestion, le MCD, le MLD, ce que le schéma ne garantit pas |
+| [`CONCEPTION.md`](CONCEPTION.md) | les règles de gestion, le MCD, le MLD dans notre base, ce que le schéma ne garantit pas |
 | [`docs/adr/`](docs/adr/) | notre choix de base |
 | `modele/` | <en bonus : la création de la base (SQL ou ORM), le script de données, les requêtes ; sinon supprimez cette ligne> |
 | `app/` | <en bonus : notre petite application ; sinon supprimez cette ligne> |
